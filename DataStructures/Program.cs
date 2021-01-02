@@ -8,24 +8,15 @@ namespace DataStructures
         static void Main(string[] args)
         {
             var l = new SingleLinkedList<int>();
-            
-            for (int i = 1; i <= 9; i++)
-            {
-                l.AddLast(i * i);
-            }
 
-            l.RemoveFirst();
-            l.RemoveFirst();
-
-            l.RemoveLast();
-            
-
-            /*var en = l.GetEnumerator();
-            while (en.MoveNext())
-            {
-                int el = en.Current;
-                Console.WriteLine(el);
-            }*/
+            l.AddAtPosition(0, 67);
+            l.AddAtPosition(0, 12);
+            l.AddAtPosition(0, 23);
+            l.AddAtPosition(1, 59);
+            l.AddAtPosition(1, 66);
+            l.AddAtPosition(4, 29);
+            l.AddAtPosition(6, 88);
+            //l.AddAtPosition(8, 16); //error
 
             foreach (var el in l)
             {

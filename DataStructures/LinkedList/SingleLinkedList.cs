@@ -43,6 +43,54 @@ namespace DataStructures.LinkedList
             }
         }
 
+        public void AddAtPosition(int position, T value)
+        {
+            if (position < 0)
+            {
+                throw new Exception("Invalid position");
+            }
+            if (position == 0)
+            {
+                var node = new Node<T> { Data = value, Next = Head };
+                Head = node;
+                return;
+            }
+
+            var h = Head;
+            while ((position > 1) && (h != null))
+            {
+                h = h.Next;
+                position--;
+            }
+            if ((position == 1) && (h != null))
+            {
+                var node = new Node<T> { Data = value, Next = h.Next };
+                h.Next = node;
+            }
+            else
+            {
+                throw new Exception("Position out of range");
+            }
+
+            /*var aux = new Node<T> { Next = Head };
+            var HeadCopy = aux;
+            while ((position > 0) && (aux != null))
+            {
+                aux = aux.Next;
+                position--;
+            }
+            if ((position == 0) && (aux != null))
+            {
+                var nod = new Node<T> { Data = value, Next = aux.Next };
+                aux.Next = nod;
+                Head = HeadCopy.Next;
+            }
+            else
+            {
+                throw new Exception("Invalid position");
+            }*/
+        }
+
         public void RemoveFirst()
         {
             if (Head != null)
