@@ -6,14 +6,15 @@ namespace DataStructures.LinkedList
 {
     class DNode<T>
     {
-        internal T data;
-        internal DNode<T>? prev;
-        internal DNode<T>? next;
-        public DNode(T d)
+        internal T Data;
+        internal DNode<T>? Prev;
+        internal DNode<T>? Next;
+
+        public DNode(T Data, DNode<T>? Prev, DNode<T>? Next)
         {
-            data = d;
-            prev = null;
-            next = null;
+            this.Data = Data;
+            this.Prev = Prev;
+            this.Next = Next;
         }
     }
 }

@@ -7,7 +7,7 @@ namespace DataStructures
     {
         static void Main(string[] args)
         {
-            var l = new SingleLinkedList<int>();
+            var l = new DoublyLinkedList<int>();
 
             l.AddAtPosition(0, 67);
             l.AddAtPosition(0, 12);
@@ -16,6 +16,10 @@ namespace DataStructures
             l.AddAtPosition(1, 66);
             l.AddAtPosition(4, 29);
             l.AddAtPosition(6, 88);
+            l.RemoveLast();
+            l.RemoveAtPosition(2);
+            l.RemoveFirst();
+            l.AddFirst(6);
             //l.AddAtPosition(8, 16); //error
 
             foreach (var el in l)

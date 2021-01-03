@@ -5,12 +5,12 @@ using System.Text;
 
 namespace DataStructures.LinkedList
 {
-    class SingleLinkedList<T> : IEnumerable<T>
+    class DoublyLinkedList<T> : IEnumerable<T>
     {
-        private Node<T>? Head;
-        private Node<T>? Tail;
+        private DNode<T>? Head;
+        private DNode<T>? Tail;
 
-        public SingleLinkedList()
+        public DoublyLinkedList()
         {
             Head = null;
             Tail = null;
@@ -20,12 +20,12 @@ namespace DataStructures.LinkedList
         {
             if (Head == null)
             {
-                //Head = Tail = new Node<T> { Data = d, Next = null };
-                Head = Tail = new Node<T>(Data: d, Next: null);
+                Head = Tail = new DNode<T>(Data: d, Prev: null, Next: null);
             }
             else
             {
-                Node<T> node = new Node<T>(Data: d, Next: Head);
+                DNode<T> node = new DNode<T>(Data: d, Prev: null, Next: Head);
+                Head.Prev = node;
                 Head = node;
             }
         }
@@ -34,11 +34,11 @@ namespace DataStructures.LinkedList
         {
             if (Tail == null)
             {
-                Head = Tail = new Node<T>(Data: d, Next: null);
+                Head = Tail = new DNode<T>(Data: d, Prev: null, Next: null);
             }
             else
             {
-                Node<T> node = new Node<T>(Data: d, Next: null);
+                DNode<T> node = new DNode<T>(Data: d, Prev: Tail, Next: null);
                 Tail.Next = node;
                 Tail = node;
             }
@@ -52,13 +52,14 @@ namespace DataStructures.LinkedList
             }
             if (position == 0)
             {
-                var node = new Node<T>(Data: value, Next: Head);
+                var node = new DNode<T>(Data: value, Prev: null, Next: Head);
+                if (Head != null)
+                    Head.Prev = node;
                 Head = node;
                 if (Head.Next == null)
                     Tail = Head;
                 return;
             }
-
             var h = Head;
             while ((position > 1) && (h != null))
             {
@@ -67,9 +68,11 @@ namespace DataStructures.LinkedList
             }
             if ((position == 1) && (h != null))
             {
-                var node = new Node<T>(Data: value, Next: h.Next);
+                var node = new DNode<T>(Data: value, Prev: h, Next: h.Next);
                 if (h.Next == null)
                     Tail = node;
+                else
+                    h.Next.Prev = node;
                 h.Next = node;
             }
             else
@@ -88,6 +91,8 @@ namespace DataStructures.LinkedList
                 }
                 else
                 {
+                    if (Head.Next != null)
+                        Head.Next.Prev = null;
                     Head = Head.Next;
                 }
             }
@@ -103,13 +108,9 @@ namespace DataStructures.LinkedList
                 }
                 else
                 {
-                    var node = Head;
-                    while (node?.Next != Tail)
-                    {
-                        node = node?.Next;
-                    }
-                    node.Next = null;
-                    Tail = node;
+                    if (Tail.Prev != null)
+                        Tail.Prev.Next = null;
+                    Tail = Tail.Prev;
                 }
             }
         }
@@ -122,6 +123,8 @@ namespace DataStructures.LinkedList
             }
             if (position == 0)
             {
+                if (Head.Next != null)
+                    Head.Next.Prev = null;
                 Head = Head.Next;
                 if (Head == null)
                 {
@@ -137,10 +140,12 @@ namespace DataStructures.LinkedList
             }
             if (temp == null || temp.Next == null)
             {
-                return;
+                return; //or exception?
             }
-            var next = temp.Next.Next;
-            temp.Next = next;
+            var aux = temp.Next.Next;
+            if (aux != null)
+                aux.Prev = temp;
+            temp.Next = aux;
         }
 
         public IEnumerator<T> GetEnumerator()

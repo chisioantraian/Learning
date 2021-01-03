@@ -8,10 +8,10 @@ namespace DataStructures.LinkedList
     {
         internal T Data;
         internal Node<T>? Next;
-        /*public Node(T d)
+        public Node(T Data, Node<T>? Next)
         {
-            Data = d;
-            Next = null;
-        }*/
+            this.Data = Data;
+            this.Next = Next;
+        }
     }
 }
