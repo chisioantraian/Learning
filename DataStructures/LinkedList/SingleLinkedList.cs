@@ -71,24 +71,6 @@ namespace DataStructures.LinkedList
             {
                 throw new Exception("Position out of range");
             }
-
-            /*var aux = new Node<T> { Next = Head };
-            var HeadCopy = aux;
-            while ((position > 0) && (aux != null))
-            {
-                aux = aux.Next;
-                position--;
-            }
-            if ((position == 0) && (aux != null))
-            {
-                var nod = new Node<T> { Data = value, Next = aux.Next };
-                aux.Next = nod;
-                Head = HeadCopy.Next;
-            }
-            else
-            {
-                throw new Exception("Invalid position");
-            }*/
         }
 
         public void RemoveFirst()
@@ -125,6 +107,35 @@ namespace DataStructures.LinkedList
                     Tail = node;
                 }
             }
+        }
+
+        public void RemoveAtPosition(int position)
+        {
+            if (Head == null)
+            {
+                return;
+            }
+            if (position == 0)
+            {
+                Head = Head.Next;
+                if (Head == null)
+                {
+                    Tail = null;
+                }
+                return;
+            }
+
+            var temp = Head;
+            for (int i = 0; i < position-1 && temp != null; i++)
+            {
+                temp = temp.Next;
+            }
+            if (temp == null || temp.Next == null)
+            {
+                return;
+            }
+            var next = temp.Next.Next;
+            temp.Next = next;
         }
 
         public IEnumerator<T> GetEnumerator()
