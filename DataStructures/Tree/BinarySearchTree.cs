@@ -53,10 +53,7 @@ namespace DataStructures.Tree
             }
         }
 
-        public void InsertRec(int value)
-        {
-            root = InsertRec(root, value);
-        }
+        public void InsertRec(int value) => root = InsertRec(root, value);
 
         private Node InsertRec(Node? root, int value)
         {
@@ -95,6 +92,50 @@ namespace DataStructures.Tree
             }
         }
 
+        public bool Contains(int value)
+        {
+            Node? current = root;
+            while (current is not null)
+            {
+                if (current.Data == value)
+                {
+                    return true;
+                }
+                else if (current.Data > value)
+                {
+                    current = current.Left;
+                }
+                else
+                {
+                    current = current.Right;
+                }
+            }
+            return false;
+        }
+
+        public bool Contains_Rec(int value) => Contains_Rec(root, value);
+        private bool Contains_Rec(Node? root, int value)
+        {
+            if (root is null)
+            {
+                return false;
+            }
+            if (root.Data == value)
+            {
+                return true;
+            }
+            if (root.Data > value)
+            {
+                return Contains_Rec(root.Left, value);
+            }
+            else
+            {
+                return Contains_Rec(root.Right, value);
+            }
+        }
+
+
+
         public void PreOrderDisplay() => PreOrder(root);
         private void PreOrder(Node? root)
         {
@@ -105,7 +146,6 @@ namespace DataStructures.Tree
                 PreOrder(root.Right);
             }
         }
-
 
         public void InOrderDisplay() => InOrder(root);
         private void InOrder(Node? root)

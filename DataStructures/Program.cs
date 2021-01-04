@@ -25,8 +25,16 @@ namespace DataStructures
             b.InsertCool(16);
 
             b.InOrderDisplay();
+            Console.WriteLine("\n - - - ");
 
-            Console.WriteLine("\nWith InsertCool");
+            if (b.Contains_Rec(10))
+            {
+                Console.WriteLine(" inside tree");
+            }
+            else
+            {
+                Console.WriteLine("NO0 :(");
+            }
         }
     }
 }
