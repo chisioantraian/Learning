@@ -21,12 +21,8 @@ namespace DataStructures.Tree
             }
         }
 
-        private Node? root;
+        private Node? root = null;
 
-        public BinarySearchTree()
-        {
-            this.root = null;
-        }
 
         public void Insert(int value)
         {
@@ -80,71 +76,58 @@ namespace DataStructures.Tree
             return root;
         }
 
-        public void PreOrderDisplay()
-        {
-            PreOrder(root);
 
-            void PreOrder(Node? root)
+        public void InsertCool(int value) => InsertCool(ref root, value);
+
+        private void InsertCool(ref Node? root, int value)
+        {
+            if (root is null)
             {
-                if (root != null)
-                {
-                    Console.Write(root.Data + " ");
-                    PreOrder(root.Left);
-                    PreOrder(root.Right);
-                }
+                root = new Node(value);
+            }
+            else if (value < root.Data)
+            {
+                InsertCool(ref root.Left, value);
+            }
+            else if (value > root.Data)
+            {
+                InsertCool(ref root.Right, value);
             }
         }
 
-        public void InOrderDisplay()
+        public void PreOrderDisplay() => PreOrder(root);
+        private void PreOrder(Node? root)
         {
-            InOrder(root);
-
-            void InOrder(Node? root)
+            if (root != null)
             {
-                if (root != null)
-                {
-                    InOrder(root.Left);
-                    Console.Write(root.Data + " ");
-                    InOrder(root.Right);
-                }
-            }
-        }
-
-        public void PostOrderDisplay()
-        {
-            PostOrder(root);
-
-            void PostOrder(Node? root)
-            {
-                if (root != null)
-                {
-                    PostOrder(root.Left);
-                    PostOrder(root.Right);
-                    Console.Write(root.Data + " ");
-                }
+                Console.Write(root.Data + " ");
+                PreOrder(root.Left);
+                PreOrder(root.Right);
             }
         }
 
 
-
-        /*public IEnumerable<int> GenerateInorder()
+        public void InOrderDisplay() => InOrder(root);
+        private void InOrder(Node? root)
         {
-            return GenerateInorder(root);
+            if (root != null)
+            {
+                InOrder(root.Left);
+                Console.Write(root.Data + " ");
+                InOrder(root.Right);
+            }
         }
 
-        private IEnumerable<int> GenerateInorder(Node? node)
+        public void PostOrderDisplay() => PostOrder(root);
+        private void PostOrder(Node? root)
         {
-            if (node != null)
+            if (root != null)
             {
-                foreach (int i in GenerateInorder(node.Left))
-                    yield return i;
-
-                yield return node.Data;
-
-                foreach (int i in GenerateInorder(node.Right))
-                    yield return i;
+                PostOrder(root.Left);
+                PostOrder(root.Right);
+                Console.Write(root.Data + " ");
             }
-        }*/
+        }
 
     }
 }

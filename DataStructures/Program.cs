@@ -9,22 +9,24 @@ namespace DataStructures
         public static void Main()
         {
             var b = new BinarySearchTree();
-            b.Insert(3);
-            b.InsertRec(8);
-            b.Insert(1);
-            b.Insert(4);
-            b.Insert(6);
-            b.Insert(2);
             
-            b.InsertRec(10);
-            b.Insert(9);
-            b.Insert(20);
-            b.Insert(25);
-            b.Insert(15);
-            b.Insert(16);
+            b.InsertCool(3);
+            b.InsertCool(8);
+            b.InsertCool(1);
+            b.InsertCool(4);
+            b.InsertCool(6);
+            b.InsertCool(2);
+            b.InsertCool(17);
+            b.InsertCool(10);
+            b.InsertCool(9);
+            b.InsertCool(20);
+            b.InsertCool(25);
+            b.InsertCool(15);
+            b.InsertCool(16);
 
             b.InOrderDisplay();
 
+            Console.WriteLine("\nWith InsertCool");
         }
     }
 }
