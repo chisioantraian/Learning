@@ -38,7 +38,7 @@ namespace DataStructures.Tree
             }
 
             Node? current = root;
-            
+
             while (current is not null)
             {
                 Node? parent = current;
@@ -48,13 +48,36 @@ namespace DataStructures.Tree
                     if (current is null)
                         parent.Left = node;
                 }
-                else
+                else if (value > current.Data)
                 {
                     current = current.Right;
                     if (current is null)
                         parent.Right = node;
                 }
             }
+        }
+
+        public void InsertRec(int value)
+        {
+            root = InsertRec(root, value);
+        }
+
+        private Node InsertRec(Node? root, int value)
+        {
+            if (root is null)
+            {
+                return new Node(value);
+            }
+
+            if (value < root.Data)
+            {
+                root.Left = InsertRec(root.Left, value);
+            }
+            else if (value > root.Data)
+            {
+                root.Right = InsertRec(root.Right, value);
+            }
+            return root;
         }
 
         public void PreOrderDisplay()
