@@ -135,6 +135,87 @@ namespace DataStructures.Tree
         }
 
 
+        //
+        // ----- remove iterative ------
+        //
+        private (Node?, Node?) FindNodeAndParent(int value)
+        {
+            Node? parent = null;
+            Node? current = this.root;
+            while (current is not null && current.Data != value)
+            {
+                parent = current;
+                if (value < current.Data)
+                    current = current.Left;
+                else
+                    current = current.Right;
+            }
+            return (parent, current);
+        }
+
+        private void RemoveWithOneChild(Node current, Node? parent)
+        {
+            Node? newCurr = (current.Left is null) ? current.Right : current.Left;
+
+            if (parent is null)
+            {
+                this.root = newCurr;
+                return;
+            }
+
+            if (current == parent.Left)
+                parent.Left = newCurr;
+            else
+                parent.Right = newCurr;
+        }
+
+        private (Node?, Node?) FindInorderSuccesorAndParent(Node current)
+        {
+            Node? parent = null;
+            Node? successor = current.Right;
+            while (successor?.Left is not null)
+            {
+                parent = successor;
+                successor = successor.Left;
+            }
+            return (successor, parent);
+        }
+
+        private void RemoveWithTwoChildren(Node current, Node? parent)
+        {
+            (Node? successor, Node? successorParent) = FindInorderSuccesorAndParent(current);
+
+            if (successorParent is not null)
+                successorParent.Left = successor?.Right;
+            else
+                current.Right = successor?.Right;
+            
+            if (successor is not null)
+                current.Data = successor.Data;
+        }
+
+        public void Remove_Iterative(int value)
+        {
+            (Node? parent, Node? current) = FindNodeAndParent(value);
+
+            if (current is null)
+            {
+                return;
+            }
+
+            if (current.Left is null || current.Right is null) 
+            {
+                RemoveWithOneChild(current, parent);
+            }
+            else
+            {
+                RemoveWithTwoChildren(current, parent);
+            }
+        }
+        //
+        // ----------
+        //
+
 
         public void PreOrderDisplay() => PreOrder(root);
         private void PreOrder(Node? root)

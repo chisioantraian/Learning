@@ -27,14 +27,17 @@ namespace DataStructures
             b.InOrderDisplay();
             Console.WriteLine("\n - - - ");
 
-            if (b.Contains_Rec(10))
-            {
-                Console.WriteLine(" inside tree");
-            }
-            else
-            {
-                Console.WriteLine("NO0 :(");
-            }
+            b.Remove_Iterative(17);
+            b.InOrderDisplay();
+            Console.WriteLine("\n - - - ");
+
+            b.Remove_Iterative(25);
+            b.InOrderDisplay();
+            Console.WriteLine("\n - - - ");
+
+            b.Remove_Iterative(6);
+            b.InOrderDisplay();
+            Console.WriteLine("\n - - - ");
         }
     }
 }
