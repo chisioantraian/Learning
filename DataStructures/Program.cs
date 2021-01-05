@@ -27,15 +27,15 @@ namespace DataStructures
             b.InOrderDisplay();
             Console.WriteLine("\n - - - ");
 
-            b.Remove_Iterative(17);
+            b.Remove(17);
             b.InOrderDisplay();
             Console.WriteLine("\n - - - ");
 
-            b.Remove_Iterative(25);
+            b.Remove(25);
             b.InOrderDisplay();
             Console.WriteLine("\n - - - ");
 
-            b.Remove_Iterative(6);
+            b.Remove(6);
             b.InOrderDisplay();
             Console.WriteLine("\n - - - ");
         }

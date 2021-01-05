@@ -136,7 +136,7 @@ namespace DataStructures.Tree
 
 
         //
-        // ----- remove iterative ------
+        // ----- begin remove iterative ------
         //
         private (Node?, Node?) FindNodeAndParent(int value)
         {
@@ -213,9 +213,48 @@ namespace DataStructures.Tree
             }
         }
         //
-        // ----------
+        // ---------- end remove iterative
         //
 
+        //
+        //
+        public void Remove(int value) => root = Remove(root, value);
+        private Node? Remove(Node? root, int value)
+        {
+            if (root is null)
+            {
+                return root;
+            }
+            if (value < root.Data)
+            {
+                root.Left = Remove(root.Left, value);
+            }
+            else if (value > root.Data)
+            {
+                root.Right = Remove(root.Right, value);
+            }
+            else
+            {
+                if (root.Left is null)
+                    return root.Right;
+                else if (root.Right is null)
+                    return root.Left;
+
+                root.Data = SuccesorValue(root.Right);
+                root.Right = Remove(root.Right, root.Data);
+            }
+            return root;
+        }
+        private int SuccesorValue(Node root)
+        {
+            while (root.Left is not null)
+            {
+                root = root.Left;
+            }
+            return root.Data;
+        }
+        //
+        //
 
         public void PreOrderDisplay() => PreOrder(root);
         private void PreOrder(Node? root)
