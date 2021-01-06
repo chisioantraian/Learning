@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HeadFirstDesignPatterns.SimUDuck.Behaviors.Flying;
+using HeadFirstDesignPatterns.SimUDuck.Ducks;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,11 +13,18 @@ namespace HeadFirstDesignPatterns.SimUDuck
         public static void Run()
         {
             Duck mallard = new MallardDuck();
-            Duck redhead = new RedheadDuck();
+            mallard.PerformQuack();
+            mallard.PerformFly();
 
-            mallard.Display();
-            redhead.Display();
-            redhead.Swim();
+            Duck model = new ModelDuck();
+            model.PerformFly();
+            model.FlyBehavior = new FlyRocketPowered();
+            model.PerformFly();
+
+            Duck rubberDuck = new RubberDuck();
+            rubberDuck.PerformQuack();
+            rubberDuck.Swim();
         }
     }
+
 }

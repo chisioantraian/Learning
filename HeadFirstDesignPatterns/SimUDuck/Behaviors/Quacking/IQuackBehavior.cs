@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HeadFirstDesignPatterns.SimUDuck
+namespace HeadFirstDesignPatterns.SimUDuck.Behaviors.Quacking
 {
-    interface IFlyable
+    interface IQuackBehavior
     {
-        void Fly();
+        void Quack();
     }
 }
