@@ -6,7 +6,7 @@ namespace HeadFirstDesignPatterns
     {
         static void Main(string[] args)
         {
-            WeatherMonitoringStation.WmsSimulator.Run();
+            StarbuzzCoffee.StarbuzzSimulator.Run();
         }
     }
 }
