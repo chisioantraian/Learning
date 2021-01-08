@@ -8,6 +8,6 @@ namespace HeadFirstDesignPatterns.WeatherMonitoringStation
 {
     interface IObserver
     {
-        void Update(float temp, float humidity, float pressure);
+        void Update(double temp, double humidity, double pressure);
     }
 }
