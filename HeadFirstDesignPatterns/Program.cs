@@ -6,7 +6,7 @@ namespace HeadFirstDesignPatterns
     {
         static void Main(string[] args)
         {
-            StarbuzzCoffee.StarbuzzSimulator.Run();
+            PizzaShop.PizzaShopSimulator.Run();
         }
     }
 }
