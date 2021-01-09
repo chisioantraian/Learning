@@ -1,4 +1,11 @@
-﻿using System;
+﻿using HeadFirstDesignPatterns.PizzaShop.Ingredients;
+using HeadFirstDesignPatterns.PizzaShop.Ingredients.Cheese;
+using HeadFirstDesignPatterns.PizzaShop.Ingredients.Clams;
+using HeadFirstDesignPatterns.PizzaShop.Ingredients.Dough;
+using HeadFirstDesignPatterns.PizzaShop.Ingredients.Pepperoni;
+using HeadFirstDesignPatterns.PizzaShop.Ingredients.Sauce;
+using HeadFirstDesignPatterns.PizzaShop.Ingredients.Veggie;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

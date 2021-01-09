@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HeadFirstDesignPatterns.PizzaShop.Pizzas
+{
+    class VeggiePizza : Pizza
+    {
+        private IPizzaIngredientFactory ingredientFactory;
+
+        public VeggiePizza(IPizzaIngredientFactory ingredientFactory, string name)
+        {
+            this.ingredientFactory = ingredientFactory;
+            this.Name = name;
+        }
+        public override void Prepare()
+        {
+            Console.WriteLine($"Preparing {Name}");
+            Cheese = ingredientFactory.CreateCheese();
+            Clams = ingredientFactory.CreateClam();
+            Dough = ingredientFactory.CreateDough();
+            Pepperoni = ingredientFactory.CreatePepperoni();
+            Sauce = ingredientFactory.CreateSauce();
+            Veggies = ingredientFactory.CreateVeggies();
+        }
+    }
+}

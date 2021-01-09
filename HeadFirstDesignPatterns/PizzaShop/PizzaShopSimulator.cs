@@ -1,10 +1,6 @@
-﻿using HeadFirstDesignPatterns.PizzaShop.Stores.Chicago;
-using HeadFirstDesignPatterns.PizzaShop.Stores.NewYork;
+﻿using HeadFirstDesignPatterns.PizzaShop.Stores;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace HeadFirstDesignPatterns.PizzaShop
 {
@@ -15,10 +11,10 @@ namespace HeadFirstDesignPatterns.PizzaShop
             PizzaStore nyStore = new NYPizzaStore();
             PizzaStore chicagoStore = new ChicagoPizzaStore();
 
-            Pizza? pizza = nyStore.OrderPizza("cheese");
+            Pizza pizza = nyStore.OrderPizza(PizzaType.Cheese);
             Console.WriteLine($"Someone ordered a {pizza?.Name}\n");
 
-            pizza = chicagoStore.OrderPizza("cheese");
+            pizza = chicagoStore.OrderPizza(PizzaType.Cheese);
             Console.WriteLine($"Someone else ordered {pizza?.Name}");
         }
     }

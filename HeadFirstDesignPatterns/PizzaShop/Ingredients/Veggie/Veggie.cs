@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HeadFirstDesignPatterns.PizzaShop.Stores.Chicago
+namespace HeadFirstDesignPatterns.PizzaShop.Ingredients.Veggie
 {
-    class ChicagoStylePepperoniPizza : Pizza
+    interface Veggie
     {
     }
 }

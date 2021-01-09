@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HeadFirstDesignPatterns.PizzaShop.Stores.California
+namespace HeadFirstDesignPatterns.PizzaShop.Ingredients.Clams
 {
-    class CaliforniaStyleClamPizza : Pizza
+    class FreshClams : Clams
     {
     }
 }

@@ -8,16 +8,16 @@ namespace HeadFirstDesignPatterns.PizzaShop
 {
     abstract class PizzaStore
     {
-        public Pizza? OrderPizza(string type)
+        public Pizza OrderPizza(PizzaType type)
         {
-            Pizza? pizza = CreatePizza(type);
-            pizza?.Prepare();
-            pizza?.Bake();
-            pizza?.Cut();
-            pizza?.Box();
+            Pizza pizza = CreatePizza(type);
+            pizza.Prepare();
+            pizza.Bake();
+            pizza.Cut();
+            pizza.Box();
             return pizza;
         }
 
-        public abstract Pizza? CreatePizza(string type);
+        public abstract Pizza CreatePizza(PizzaType type);
     }
 }

@@ -1,10 +1,16 @@
-﻿using System;
+﻿using HeadFirstDesignPatterns.PizzaShop.Ingredients.Cheese;
+using HeadFirstDesignPatterns.PizzaShop.Ingredients.Clams;
+using HeadFirstDesignPatterns.PizzaShop.Ingredients.Dough;
+using HeadFirstDesignPatterns.PizzaShop.Ingredients.Pepperoni;
+using HeadFirstDesignPatterns.PizzaShop.Ingredients.Sauce;
+using HeadFirstDesignPatterns.PizzaShop.Ingredients.Veggie;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HeadFirstDesignPatterns.PizzaShop
+namespace HeadFirstDesignPatterns.PizzaShop.Factories
 {
     class NYPizzaIngredientFactory : IPizzaIngredientFactory
     {
@@ -19,7 +25,9 @@ namespace HeadFirstDesignPatterns.PizzaShop
 
         public List<Veggie> CreateVeggies()
         {
-            return new List<Veggie> { new Garlic(), new Onion(), new Mushrom(), new RedPepper() };
+            return new List<Veggie> { new Garlic(), new Onion(), new Mushroom(), new RedPepper() };
         }
+
+
     }
 }

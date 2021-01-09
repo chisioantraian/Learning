@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HeadFirstDesignPatterns.PizzaShop.Stores.NewYork
+namespace HeadFirstDesignPatterns.PizzaShop.Ingredients.Cheese
 {
-    class NYStylePepperoniPizza : Pizza
+    class ReggianoCheese : Cheese
     {
     }
 }
