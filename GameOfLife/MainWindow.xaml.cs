@@ -22,7 +22,7 @@ namespace GameOfLife
         private readonly Random random = new Random();
         private readonly DispatcherTimer timer = new DispatcherTimer();
         
-        private int cellSize = 25;
+        private int cellSize = 20;
         private int rows;
         private int cols;
         
@@ -34,8 +34,8 @@ namespace GameOfLife
             InitializeComponent();
             paintSurface.UpdateLayout();
 
-            rows = 20;//(int)(paintSurface.ActualHeight / cellSize);
-            cols = 20;//(int)(paintSurface.ActualWidth / cellSize);
+            rows = 30;//(int)(paintSurface.ActualHeight / cellSize);
+            cols = 30;//(int)(paintSurface.ActualWidth / cellSize);
             grid = new int[rows][];
             for (int i = 0; i < rows; i++)
                 grid[i] = new int[cols];
@@ -44,7 +44,7 @@ namespace GameOfLife
 
 
 
-            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Interval = TimeSpan.FromMilliseconds(50);
             timer.Tick += timer_Tick;
             timer.Start();
         }
@@ -62,7 +62,90 @@ namespace GameOfLife
             for (int i = 0; i < rows; i++)
                 aux[i] = new int[cols];
 
-            //
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    aux[i][j] = CheckCellStatus(i, j);
+                }
+            }
+            grid = aux;
+        }
+
+        private int CheckCellStatus(int row, int col)
+        {
+            int neigh = NeighbourCount(row, col);
+            if (grid[row][col] == 1)
+            {
+                if (neigh < 2)
+                {
+                    return 0;
+                }
+                if (neigh == 2 || neigh == 3)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            else if (grid[row][col] == 0 && neigh == 3)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        int NeighbourCount(int row, int col)
+        {
+            //top left
+            if (row == 0 && col == 0)
+            {
+                return grid[row][col + 1] + grid[row + 1][col + 1] + grid[row + 1][col];
+            }
+            //top right
+            if (row == 0 && col == cols - 1)
+            {
+                return grid[row + 1][col] + grid[row + 1][col - 1] + grid[row][col - 1];
+            }
+            //bottom left
+            if (row == rows - 1 && col == 0)
+            {
+                return grid[row - 1][col] + grid[row - 1][col + 1] + grid[row][col + 1];
+            }
+            //bottom right
+            if (row == rows - 1 && col == cols - 1)
+            {
+                return grid[row][col - 1] + grid[row - 1][col - 1] + grid[row - 1][col];
+            }
+            //top edge
+            if (row == 0)
+            {
+                return grid[row][col + 1] + grid[row + 1][col + 1] + grid[row + 1][col] + grid[row + 1][col - 1] + grid[row][col - 1];
+            }
+            //right edge
+            if (col == cols - 1)
+            {
+                return grid[row + 1][col] + grid[row + 1][col - 1] + grid[row][col - 1] + grid[row - 1][col - 1] + grid[row - 1][col];
+            }
+            //bottom edge
+            if (row == rows - 1)
+            {
+                return grid[row][col - 1] + grid[row - 1][col - 1] + grid[row - 1][col] + grid[row - 1][col + 1] + grid[row][col + 1];
+            }
+            //left edge
+            if (col == 0)
+            {
+                return grid[row - 1][col] + grid[row - 1][col + 1] + grid[row][col + 1] + grid[row + 1][col + 1] + grid[row + 1][col];
+            }
+            //inside
+            return grid[row - 1][col - 1] + grid[row - 1][col] + grid[row - 1][col + 1] +
+                   grid[row][col - 1] + grid[row][col + 1] +
+                   grid[row + 1][col - 1] + grid[row + 1][col] + grid[row + 1][col + 1];
         }
 
         private void GenerateRandomPattern()
