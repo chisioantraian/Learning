@@ -34,15 +34,13 @@ namespace GameOfLife
             InitializeComponent();
             paintSurface.UpdateLayout();
 
-            rows = 30;//(int)(paintSurface.ActualHeight / cellSize);
-            cols = 30;//(int)(paintSurface.ActualWidth / cellSize);
+            rows = 40;//(int)(paintSurface.ActualHeight / cellSize);
+            cols = 60;//(int)(paintSurface.ActualWidth / cellSize);
             grid = new int[rows][];
             for (int i = 0; i < rows; i++)
                 grid[i] = new int[cols];
 
             GenerateRandomPattern();
-
-
 
             timer.Interval = TimeSpan.FromMilliseconds(50);
             timer.Tick += timer_Tick;
@@ -100,52 +98,52 @@ namespace GameOfLife
             }
         }
 
-        int NeighbourCount(int row, int col)
+        int NeighbourCount(int r, int c)
         {
             //top left
-            if (row == 0 && col == 0)
+            if (r == 0 && c == 0)
             {
-                return grid[row][col + 1] + grid[row + 1][col + 1] + grid[row + 1][col];
+                return grid[r][c + 1] + grid[r + 1][c + 1] + grid[r + 1][c];
             }
             //top right
-            if (row == 0 && col == cols - 1)
+            if (r == 0 && c == cols - 1)
             {
-                return grid[row + 1][col] + grid[row + 1][col - 1] + grid[row][col - 1];
+                return grid[r + 1][c] + grid[r + 1][c - 1] + grid[r][c - 1];
             }
             //bottom left
-            if (row == rows - 1 && col == 0)
+            if (r == rows - 1 && c == 0)
             {
-                return grid[row - 1][col] + grid[row - 1][col + 1] + grid[row][col + 1];
+                return grid[r - 1][c] + grid[r - 1][c + 1] + grid[r][c + 1];
             }
             //bottom right
-            if (row == rows - 1 && col == cols - 1)
+            if (r == rows - 1 && c == cols - 1)
             {
-                return grid[row][col - 1] + grid[row - 1][col - 1] + grid[row - 1][col];
+                return grid[r][c - 1] + grid[r - 1][c - 1] + grid[r - 1][c];
             }
             //top edge
-            if (row == 0)
+            if (r == 0)
             {
-                return grid[row][col + 1] + grid[row + 1][col + 1] + grid[row + 1][col] + grid[row + 1][col - 1] + grid[row][col - 1];
+                return grid[r][c + 1] + grid[r + 1][c + 1] + grid[r + 1][c] + grid[r + 1][c - 1] + grid[r][c - 1];
             }
             //right edge
-            if (col == cols - 1)
+            if (c == cols - 1)
             {
-                return grid[row + 1][col] + grid[row + 1][col - 1] + grid[row][col - 1] + grid[row - 1][col - 1] + grid[row - 1][col];
+                return grid[r + 1][c] + grid[r + 1][c - 1] + grid[r][c - 1] + grid[r - 1][c - 1] + grid[r - 1][c];
             }
             //bottom edge
-            if (row == rows - 1)
+            if (r == rows - 1)
             {
-                return grid[row][col - 1] + grid[row - 1][col - 1] + grid[row - 1][col] + grid[row - 1][col + 1] + grid[row][col + 1];
+                return grid[r][c - 1] + grid[r - 1][c - 1] + grid[r - 1][c] + grid[r - 1][c + 1] + grid[r][c + 1];
             }
             //left edge
-            if (col == 0)
+            if (c == 0)
             {
-                return grid[row - 1][col] + grid[row - 1][col + 1] + grid[row][col + 1] + grid[row + 1][col + 1] + grid[row + 1][col];
+                return grid[r - 1][c] + grid[r - 1][c + 1] + grid[r][c + 1] + grid[r + 1][c + 1] + grid[r + 1][c];
             }
             //inside
-            return grid[row - 1][col - 1] + grid[row - 1][col] + grid[row - 1][col + 1] +
-                   grid[row][col - 1] + grid[row][col + 1] +
-                   grid[row + 1][col - 1] + grid[row + 1][col] + grid[row + 1][col + 1];
+            return grid[r - 1][c - 1] + grid[r - 1][c] + grid[r - 1][c + 1] +
+                   grid[r][c - 1] + grid[r][c + 1] +
+                   grid[r + 1][c - 1] + grid[r + 1][c] + grid[r + 1][c + 1];
         }
 
         private void GenerateRandomPattern()
@@ -181,29 +179,58 @@ namespace GameOfLife
             {
                 Width = cellSize,
                 Height = cellSize,
-                Fill = Brushes.Black
+                Fill = Brushes.Yellow
             };
-            Canvas.SetLeft(cell, row * cellSize);
-            Canvas.SetTop(cell, col * cellSize);
-            //cell.SetValue(Canvas.LeftProperty, row * cellSize);
-            //cell.SetValue(Canvas.TopProperty, col * cellSize);
+            Canvas.SetLeft(cell, col * cellSize);
+            Canvas.SetTop(cell, row * cellSize);
             paintSurface.Children.Add(cell);
         }
 
         private void RandomPattern_Click(object sender, RoutedEventArgs e)
         {
-
+            GenerateRandomPattern();
         }
 
         private void StopTime_Click(object sender, RoutedEventArgs e)
         {
-
+            if (timer.IsEnabled)
+            {
+                timer.IsEnabled = false;
+                TimeButton.Content = "Start time";
+                NextButton.IsEnabled = true;
+            }
+            else
+            {
+                timer.IsEnabled = true;
+                TimeButton.Content = "Stop time";
+                NextButton.IsEnabled = false;
+            }
         }
         
 
         private void paintSurface_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            double x = e.GetPosition(paintSurface).X;
+            double y = e.GetPosition(paintSurface).Y;
+            Title = $"titlu : {x} {y}";
 
+            int row = (int)(y / cellSize);
+            int col = (int)(x / cellSize);
+
+            if (row < rows && col < cols)
+            {
+                grid[row][col] = 1 - grid[row][col];
+            }
+            DrawGrid();
         }
+
+        private void NextGeneration_Click(object sender, RoutedEventArgs e)
+        {
+            paintSurface.Children.Clear();
+            DrawGrid();
+            FindNextGeneration();
+        }
+
+
     }
 }

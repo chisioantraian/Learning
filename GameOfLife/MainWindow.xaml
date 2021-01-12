@@ -14,13 +14,21 @@
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0" Background="LightBlue">
+        <StackPanel Grid.Column="0" Background="IndianRed">
             <Button
                 Margin="4"
                 Click="RandomPattern_Click"
                 Content="Random Pattern"
                 FontSize="18" />
             <Button
+                x:Name="NextButton"
+                Margin="4"
+                Click="NextGeneration_Click"
+                Content="Next Generation"
+                FontSize="16"
+                IsEnabled="False" />
+            <Button
+                x:Name="TimeButton"
                 Margin="4"
                 Click="StopTime_Click"
                 Content="Stop Time"
@@ -31,7 +39,7 @@
             Grid.Column="1"
             Width="auto"
             Height="auto"
-            Background="Pink"
+            Background="Black"
             MouseDown="paintSurface_MouseDown" />
     </Grid>
 </Window>
