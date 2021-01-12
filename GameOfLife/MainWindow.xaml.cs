@@ -21,6 +21,8 @@ namespace GameOfLife
     {
         private readonly Random random = new Random();
         private readonly DispatcherTimer timer = new DispatcherTimer();
+
+        private bool IsCurvingAllowed = true;
         
         private int cellSize = 20;
         private int rows;
@@ -72,7 +74,18 @@ namespace GameOfLife
 
         private int CheckCellStatus(int row, int col)
         {
-            int neigh = NeighbourCount(row, col);
+            //int neigh = NeighbourCount(row, col);
+            int neigh;
+            if (IsCurvingAllowed)
+            {
+                neigh = CurvedNeighbourCount(row, col);
+            }
+            else
+            {
+                neigh = NeighbourCount(row, col);
+            }
+
+            
             if (grid[row][col] == 1)
             {
                 if (neigh < 2)
@@ -98,7 +111,7 @@ namespace GameOfLife
             }
         }
 
-        int NeighbourCount(int r, int c)
+        private int NeighbourCount(int r, int c)
         {
             //top left
             if (r == 0 && c == 0)
@@ -144,6 +157,36 @@ namespace GameOfLife
             return grid[r - 1][c - 1] + grid[r - 1][c] + grid[r - 1][c + 1] +
                    grid[r][c - 1] + grid[r][c + 1] +
                    grid[r + 1][c - 1] + grid[r + 1][c] + grid[r + 1][c + 1];
+        }
+
+
+        private int CurvedNeighbourCount(int r, int c)
+        {
+            int top = r - 1;
+            int bottom = r + 1;
+            int left = c - 1;
+            int right = c + 1;
+
+            if (top == -1)
+            {
+                top = rows-1;
+            }
+            if (bottom == rows)
+            {
+                bottom = 0;
+            }
+            if (left == -1)
+            {
+                left = cols-1;
+            }
+            if (right == cols)
+            {
+                right = 0;
+            }
+
+            return grid[top][left] + grid[top][c] + grid[top][right] +
+                   grid[r][left] + grid[r][right] +
+                   grid[bottom][left] + grid[bottom][c] + grid[bottom][right];
         }
 
         private void GenerateRandomPattern()
@@ -231,6 +274,19 @@ namespace GameOfLife
             FindNextGeneration();
         }
 
+        private void Curving_Click(object sender, RoutedEventArgs e)
+        {
+            if (IsCurvingAllowed)
+            {
+                IsCurvingAllowed = false;
+                CurvingButton.Content = "Allow curving";
+            }
+            else
+            {
+                IsCurvingAllowed = true;
+                CurvingButton.Content = "Disallow curving";
+            }
+        }
 
     }
 }

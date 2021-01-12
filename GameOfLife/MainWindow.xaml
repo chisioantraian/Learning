@@ -33,6 +33,12 @@
                 Click="StopTime_Click"
                 Content="Stop Time"
                 FontSize="18" />
+            <Button
+                x:Name="CurvingButton"
+                Margin="4"
+                Click="Curving_Click"
+                Content="Disallow curving"
+                FontSize="18" />
         </StackPanel>
         <Canvas
             x:Name="paintSurface"
