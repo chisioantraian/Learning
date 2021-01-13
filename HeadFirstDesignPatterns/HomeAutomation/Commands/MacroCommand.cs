@@ -25,7 +25,10 @@ namespace HeadFirstDesignPatterns.HomeAutomation.Commands
 
         public void Undo()
         {
-            throw new NotImplementedException();
+            foreach (var command in commands)
+            {
+                command.Undo();
+            }
         }
     }
 }
