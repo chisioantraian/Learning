@@ -288,5 +288,15 @@ namespace GameOfLife
             }
         }
 
+        private void ClearAll_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    grid[i][j] = 0;
+                }
+            }
+        }
     }
 }

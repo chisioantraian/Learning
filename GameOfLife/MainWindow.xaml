@@ -39,6 +39,11 @@
                 Click="Curving_Click"
                 Content="Disallow curving"
                 FontSize="18" />
+            <Button
+                Margin="4"
+                Click="ClearAll_Click"
+                Content="Clear all"
+                FontSize="18" />
         </StackPanel>
         <Canvas
             x:Name="paintSurface"
