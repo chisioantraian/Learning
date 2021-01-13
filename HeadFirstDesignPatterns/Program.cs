@@ -6,7 +6,7 @@ namespace HeadFirstDesignPatterns
     {
         static void Main(string[] args)
         {
-            PizzaShop.PizzaShopSimulator.Run();
+            HomeAutomation.HASimulator.Run();
         }
     }
 }
