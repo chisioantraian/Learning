@@ -6,7 +6,7 @@ namespace HeadFirstDesignPatterns
     {
         static void Main(string[] args)
         {
-            HomeAutomation.HASimulator.RunParty();
+            TurkeyAdapter.DuckTestDrive.Run();
         }
     }
 }
