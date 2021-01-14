@@ -6,7 +6,7 @@ namespace HeadFirstDesignPatterns
     {
         static void Main(string[] args)
         {
-            HomeTheater.HomeTheaterTestDrive.Run();
+            StarbuzzTemplate.BeverageSimulator.RunComparable();
         }
     }
 }
