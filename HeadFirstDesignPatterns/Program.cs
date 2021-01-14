@@ -6,7 +6,7 @@ namespace HeadFirstDesignPatterns
     {
         static void Main(string[] args)
         {
-            TurkeyAdapter.DuckTestDrive.Run();
+            HomeTheater.HomeTheaterTestDrive.Run();
         }
     }
 }
