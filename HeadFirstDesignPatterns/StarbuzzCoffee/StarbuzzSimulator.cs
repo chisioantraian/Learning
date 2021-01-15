@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HeadFirstDesignPatterns.StarbuzzCoffee
 {
-    class StarbuzzSimulator
+    internal static class StarbuzzSimulator
     {
         public static void Run()
         {

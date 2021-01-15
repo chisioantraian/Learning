@@ -4,7 +4,7 @@ using System;
 
 namespace HeadFirstDesignPatterns.PizzaShop
 {
-    class PizzaShopSimulator
+    internal static class PizzaShopSimulator
     {
         public static void Run()
         {

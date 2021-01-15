@@ -24,9 +24,9 @@ namespace GameOfLife
 
         private bool IsCurvingAllowed = true;
         
-        private int cellSize = 20;
-        private int rows;
-        private int cols;
+        private readonly int cellSize = 20;
+        private readonly int rows;
+        private readonly int cols;
         
         private int[][] grid;
 

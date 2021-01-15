@@ -14,7 +14,7 @@ namespace HeadFirstDesignPatterns.StarbuzzTemplate
         public override bool CustomerWantsCondiments()
         {
             string answer = GetUserInput();
-            return answer.ToLower().StartsWith("y");
+            return answer.StartsWith("y", StringComparison.OrdinalIgnoreCase);
         }
 
         private string GetUserInput()

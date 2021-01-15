@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HeadFirstDesignPatterns.DinerPancakeMenu
 {
-    class MenuSimulator
+    internal static class MenuSimulator
     {
         public static void Run()
         {

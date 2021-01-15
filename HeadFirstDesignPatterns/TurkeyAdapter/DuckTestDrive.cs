@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HeadFirstDesignPatterns.TurkeyAdapter
 {
-    class DuckTestDrive
+    internal static class DuckTestDrive
     {
         public static void Run()
         {

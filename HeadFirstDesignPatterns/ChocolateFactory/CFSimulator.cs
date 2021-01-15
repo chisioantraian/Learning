@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HeadFirstDesignPatterns.ChocolateFactory
 {
-    class CFSimulator
+    internal static class CFSimulator
     {
         public static void Run()
         {

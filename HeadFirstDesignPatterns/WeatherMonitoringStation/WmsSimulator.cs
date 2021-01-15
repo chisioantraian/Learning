@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HeadFirstDesignPatterns.WeatherMonitoringStation
 {
-    class WmsSimulator
+    internal static class WmsSimulator
     {
         public static void Run()
         {

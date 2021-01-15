@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HeadFirstDesignPatterns.SimUDuck
 {
-    class SimUDuckSimulator
+    internal static class SimUDuckSimulator
     {
         public static void Run()
         {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HeadFirstDesignPatterns.HomeAutomation
 {
-    class HASimulator
+    internal static class HASimulator
     {
         public static void Run()
         {

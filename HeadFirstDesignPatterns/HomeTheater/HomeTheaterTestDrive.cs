@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HeadFirstDesignPatterns.HomeTheater
 {
-    class HomeTheaterTestDrive
+    internal static class HomeTheaterTestDrive
     {
         public static void Run()
         {
@@ -18,12 +18,9 @@ namespace HeadFirstDesignPatterns.HomeTheater
             var screen = new Screen();
             var lights = new TheaterLights();
             var popper = new PopcornPopper();
-            var homeTheater = new HomeTheaterFacade(amplifier, tuner, dvd, cd,
-                projector, lights, screen, popper);
-
+            var homeTheater = new HomeTheaterFacade(amplifier, tuner, dvd, cd, projector, lights, screen, popper);
             homeTheater.WatchMovie("Raiders of the Lost Ark");
             homeTheater.EndMovie();
-            
         }
     }
 }
