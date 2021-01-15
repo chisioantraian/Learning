@@ -8,34 +8,37 @@ namespace HeadFirstDesignPatterns.DinerPancakeMenu
 {
     class Waitress
     {
-        private IMenu<MenuItem> pancakeHouseMenu;
-        private IMenu<MenuItem> dinerMenu;
-
-        public Waitress(IMenu<MenuItem> pancakeHouseMenu, IMenu<MenuItem> dinerMenu)
+        private MenuComponent allMenus;
+        public Waitress(MenuComponent allMenus)
         {
-            this.pancakeHouseMenu = pancakeHouseMenu;
-            this.dinerMenu = dinerMenu;
+            this.allMenus = allMenus;
         }
 
         public void PrintMenu()
         {
-            var pancakeEnumerator = pancakeHouseMenu.CreateEnumerator();
-            var dinerEnumerator = dinerMenu.CreateEnumerator();
-            
-            Console.WriteLine("Menu\n-----\nBREAKFAST");
-            PrintMenu(pancakeEnumerator);
-            
-            Console.WriteLine("\nLUNCH");
-            PrintMenu(dinerEnumerator);
+            allMenus.Print();
         }
 
-        private void PrintMenu(IEnumerator<MenuItem> enumerator)
+        public void PrintVegetarianMenu()
         {
+            var enumerator = allMenus.CreateEnumerator();
+            Console.WriteLine("\n\nVEGETARIAN MENU\n----");
             while (enumerator.MoveNext())
             {
-                MenuItem menuItem = enumerator.Current;
-                Console.WriteLine($"{menuItem.Name} {menuItem.Price} {menuItem.Description}\n");
+                var menuComponent = enumerator.Current;
+                try
+                {
+                    if (menuComponent.IsVegetarian())
+                    {
+                        menuComponent.Print();
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
         }
+
     }
 }
