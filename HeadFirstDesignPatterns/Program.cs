@@ -4,7 +4,7 @@ namespace HeadFirstDesignPatterns
 {
     internal static class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
             DinerPancakeMenu.MenuSimulator.Run();
         }

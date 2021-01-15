@@ -8,10 +8,10 @@ namespace HeadFirstDesignPatterns.DinerPancakeMenu
 {
     class Waitress
     {
-        private PancakeHouseMenu pancakeHouseMenu;
-        private DinerMenu dinerMenu;
+        private IMenu<MenuItem> pancakeHouseMenu;
+        private IMenu<MenuItem> dinerMenu;
 
-        public Waitress(PancakeHouseMenu pancakeHouseMenu, DinerMenu dinerMenu)
+        public Waitress(IMenu<MenuItem> pancakeHouseMenu, IMenu<MenuItem> dinerMenu)
         {
             this.pancakeHouseMenu = pancakeHouseMenu;
             this.dinerMenu = dinerMenu;
@@ -19,19 +19,21 @@ namespace HeadFirstDesignPatterns.DinerPancakeMenu
 
         public void PrintMenu()
         {
-            var pancakeIterator = pancakeHouseMenu.CreateIterator();
-            var dinerIterator = dinerMenu.CreateIterator();
+            var pancakeEnumerator = pancakeHouseMenu.CreateEnumerator();
+            var dinerEnumerator = dinerMenu.CreateEnumerator();
+            
             Console.WriteLine("Menu\n-----\nBREAKFAST");
-            PrintMenu(pancakeIterator);
+            PrintMenu(pancakeEnumerator);
+            
             Console.WriteLine("\nLUNCH");
-            PrintMenu(dinerIterator);
+            PrintMenu(dinerEnumerator);
         }
 
-        private void PrintMenu(IIterator<MenuItem> iterator)
+        private void PrintMenu(IEnumerator<MenuItem> enumerator)
         {
-            while (iterator.HasNext())
+            while (enumerator.MoveNext())
             {
-                MenuItem menuItem = iterator.Next();
+                MenuItem menuItem = enumerator.Current;
                 Console.WriteLine($"{menuItem.Name} {menuItem.Price} {menuItem.Description}\n");
             }
         }

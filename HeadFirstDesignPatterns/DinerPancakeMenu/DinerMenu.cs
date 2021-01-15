@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HeadFirstDesignPatterns.DinerPancakeMenu
 {
-    class DinerMenu
+    class DinerMenu : IMenu<MenuItem>
     {
         private const int MAX_ITEMS = 6;
         private int numberOfItems = 0;
@@ -34,9 +34,16 @@ namespace HeadFirstDesignPatterns.DinerPancakeMenu
             }
         }
 
-        public IIterator<MenuItem> CreateIterator()
+        public IEnumerator<MenuItem> CreateEnumerator()
         {
-            return new DinerMenuIterator(menuItems);
+            return new DinerMenuEnumerator(menuItems);
         }
+
+        //public IEnumerator<MenuItem> CreateIterator()
+        //{
+        //    return new DinerMenuIterator(menuItems);
+        //}
+
+
     }
 }

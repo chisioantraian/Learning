@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HeadFirstDesignPatterns.DinerPancakeMenu
 {
-    class PancakeHouseMenu
+    class PancakeHouseMenu : IMenu<MenuItem>
     {
         private List<MenuItem> menuItems;
 
@@ -19,12 +19,12 @@ namespace HeadFirstDesignPatterns.DinerPancakeMenu
                 new MenuItem("Blueberry Pancakes", "Pancakes made with fresh blueberries", true, 3.49),
                 new MenuItem("Waffles", "Waffles, with your choice of blueberries or strawberries", true, 3.59)
             };
-
         }
 
-        public IIterator<MenuItem> CreateIterator()
+        public IEnumerator<MenuItem> CreateEnumerator()
         {
-            return new PancakeHouseIterator(menuItems);
+            return menuItems.GetEnumerator();
         }
+
     }
 }
