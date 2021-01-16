@@ -7,14 +7,13 @@ using System.Threading.Tasks;
 
 namespace HeadFirstDesignPatterns.DinerPancakeMenu
 {
-    class CompositeIterator : IEnumerator<MenuComponent>
+    internal class CompositeIterator : IEnumerator<MenuComponent>
     {
-        private Stack<IEnumerator<MenuComponent>> stack = new();
+        private readonly Stack<IEnumerator<MenuComponent>> stack = new();
 
         public CompositeIterator(IEnumerator<MenuComponent> enumerator)
         {
             stack.Push(enumerator);
-            //stack.Push(new NullIterator());
         }
 
         public MenuComponent Current
@@ -30,7 +29,6 @@ namespace HeadFirstDesignPatterns.DinerPancakeMenu
                     {
                         stack.Push(en.Current.CreateEnumerator());
                     }
-                    //stack.Push(component.CreateEnumerator());
                 }
                 return component;
             }
