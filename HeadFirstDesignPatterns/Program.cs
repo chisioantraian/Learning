@@ -6,7 +6,7 @@ namespace HeadFirstDesignPatterns
     {
         private static void Main()
         {
-            DinerPancakeMenu.MenuSimulator.Run();
+            JawBreakers.GumballMachineTestDrive.Run();
         }
     }
 }
