@@ -6,7 +6,7 @@ namespace HeadFirstDesignPatterns
     {
         private static void Main()
         {
-            JawBreakers.GumballMachineTestDrive.Run();
+            DuckReunion.DuckSimulator.Run();
         }
     }
 }
