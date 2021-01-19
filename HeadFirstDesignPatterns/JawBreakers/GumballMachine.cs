@@ -16,9 +16,10 @@ namespace HeadFirstDesignPatterns.JawBreakers
         public IState CurrentState { get; set; }
 
         public int Count { get; private set; }
+        public string Location { get; }
 
 
-        public GumballMachine(int count)
+        public GumballMachine(string location, int count)
         {
             this.SoldOutState = new SoldOutState(this);
             this.NoQuarterState = new NoQuarterState(this);
@@ -26,6 +27,7 @@ namespace HeadFirstDesignPatterns.JawBreakers
             this.SoldState = new SoldState(this);
             this.WinnerState = new WinnerState(this);
 
+            this.Location = location;
             this.Count = count;
             this.CurrentState = this.SoldOutState;
             if (Count > 0)

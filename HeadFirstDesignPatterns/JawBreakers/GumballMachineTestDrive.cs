@@ -10,8 +10,14 @@ namespace HeadFirstDesignPatterns.JawBreakers
     {
         public static void Run()
         {
-            var gumballMachine = new GumballMachine(5);
-            Console.WriteLine(gumballMachine);
+            Console.Write("Location: ");
+            string location = Console.ReadLine() ?? string.Empty;
+
+            Console.Write("Gumballs count: ");
+            int count = int.Parse(Console.ReadLine() ?? "0");
+
+            var gumballMachine = new GumballMachine(location, count);
+            var monitor = new GumballMonitor(gumballMachine);
 
             gumballMachine.InsertQuarter();
             gumballMachine.TurnCrank();
@@ -22,6 +28,8 @@ namespace HeadFirstDesignPatterns.JawBreakers
             gumballMachine.InsertQuarter();
             gumballMachine.TurnCrank();
             Console.WriteLine(gumballMachine);
+
+            monitor.Report();
         }
     }
 }
