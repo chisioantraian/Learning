@@ -6,7 +6,9 @@ namespace Nutshell
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            System.Int32 i;
+            i = 4;
+            Console.WriteLine($"Hello World! {i}");
         }
     }
 }
