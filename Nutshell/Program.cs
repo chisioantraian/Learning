@@ -6,9 +6,10 @@ namespace Nutshell
     {
         static void Main(string[] args)
         {
-            var rect = new Rectangle(3, 4);
-            var (width, height) = rect;
-            Console.WriteLine($"{width} {height}");
+            var s = new Sentence();
+            Console.WriteLine(s[3]);
+            s[3] = "Kangaroo";
+            Console.WriteLine(s[3]);
         }
 
     }
