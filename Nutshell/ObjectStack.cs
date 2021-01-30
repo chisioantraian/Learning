@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Nutshell
 {
-    class ObjectStack
+    class P
+    {
+        P(int a, int b) { }
+    }
+    class ObjectStack<T> where T : new()
     {
         private int position;
         object[] data = new object[10];
