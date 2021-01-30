@@ -9,7 +9,8 @@ namespace Nutshell
     {
         static void Main(string[] args)
         {
-            ThreadTest.Run();
+            TaskTest.Run();
+            Console.Read();
         }
     }
 }
