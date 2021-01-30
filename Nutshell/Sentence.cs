@@ -15,5 +15,8 @@ namespace Nutshell
             get => words[pos];
             set => words[pos] = value;
         }
+
+        public string this[Index index] => words[index];
+        public string[] this[Range range] => words[range];
     }
 }
