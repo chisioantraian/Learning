@@ -11,25 +11,43 @@ namespace Nutshell
     {
         public static void Run()
         {
-            CookEggs();
-            CookBacon();
+            AnotherMethodHere();
         }
 
-        private static async void CookEggs()
+        private static async void AnotherMethodHere()
         {
+            var result = await CookEggs();
+            CookBacon();
+            ToastBread();
+        }
+
+        private static async Task<bool> CookEggs()
+        {
+            bool result = false;
             await Task.Run(() =>
             {
-                Thread.Sleep(2000);
+                Thread.Sleep(5000);
                 Console.WriteLine("Eggs cooked");
+                result = true;
             });
+            return result;
         }
 
         private static async void CookBacon()
         {
             await Task.Run(() =>
             {
-                Thread.Sleep(2000);
+                Thread.Sleep(5000);
                 Console.WriteLine("Bacon cooked");
+            });
+        }
+
+        public static async void ToastBread()
+        {
+            await Task.Run(() =>
+            {
+                Thread.Sleep(5000);
+                Console.WriteLine("Bread toasted");
             });
         }
     }

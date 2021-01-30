@@ -7,9 +7,9 @@ namespace Nutshell
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            TaskTest.Run();
+            await AsyncBreakfast.Run5();
             Console.Read();
         }
     }
