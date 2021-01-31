@@ -1,46 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
-namespace AutomatedTellerMachine.Controllers
+namespace IdentitySample.Controllers
 {
     public class HomeController : Controller
     {
-        // GET /home/index
-        [MyLoggingFilter]
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET /home/about
-        [ActionName("about-this-atm")]
+        [HttpGet]
+        [Authorize]
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Your app description page.";
 
-            return View("About");
+            return View();
         }
 
+        [HttpGet]
         public ActionResult Contact()
         {
-            ViewBag.TheMessage = "Having trouble? Send us a message.";
-            return View();
-        }
+            ViewBag.Message = "Your contact page.";
 
-        [HttpPost]
-        public ActionResult Contact(string message)
-        {
-            //todo send message to hq
-            ViewBag.TheMessage = "thanks, we got your message";
             return View();
-        }
-
-        public ActionResult Foo()
-        {
-            return View("About");
         }
 
         public ActionResult Serial(string letterCase)
@@ -50,9 +34,6 @@ namespace AutomatedTellerMachine.Controllers
             {
                 return Content(serial.ToLower());
             }
-            //return new HttpStatusCodeResult(403);
-            //return Json(new { name = "serial", value = serial },
-            //    JsonRequestBehavior.AllowGet);
             return RedirectToAction("Index");
         }
     }
