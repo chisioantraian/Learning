@@ -8,7 +8,8 @@ namespace Algorithms
     {
         public static int Search(List<int> list, int num)
         {
-            return Search(list, 0, list.Count, num);
+            //return Search(list, 0, list.Count, num);
+            return IterativeSearch(list, num);
         }
 
         private static int Search(List<int> list, int start, int end, int num)
@@ -32,10 +33,34 @@ namespace Algorithms
             }
         }
 
+        private static int IterativeSearch(List<int> list, int num)
+        {
+            int start = 0;
+            int end = list.Count - 1;
+
+            while (start <= end)
+            {
+                int mid = (start + end) / 2;
+                if (list[mid] == num)
+                {
+                    return mid;
+                }
+                else if (num < list[mid])
+                {
+                    end = mid - 1;
+                }
+                else
+                {
+                    start = mid + 1;
+                }
+            }
+            return -1;
+        }
+
         public static void RunAlg()
         {
-            List<int> nums = new List<int>{ 10, 20, 30, 50, 70, 77 };
-            int num = 30;
+            List<int> nums = new List<int>{ 10, 20, 30, 50, 70, };
+            int num = 70;
             int index = Search(nums, num);
 
             if (index == -1)
