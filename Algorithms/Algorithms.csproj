@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Primes\" />
     <Folder Include="Sorting\" />
   </ItemGroup>
 
