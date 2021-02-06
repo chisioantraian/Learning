@@ -6,7 +6,7 @@ namespace Algorithms
     {
         static void Main(string[] args)
         {
-            Primes.PrimalityTest.RunAlg();
+            Sorting.QuickSort.RunAlg();
         }
     }
 }
