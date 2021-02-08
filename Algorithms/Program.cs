@@ -6,7 +6,7 @@ namespace Algorithms
     {
         static void Main(string[] args)
         {
-            Sorting.QuickSort.RunAlg();
+            Strings.StrRot.RunAlg();
         }
     }
 }
