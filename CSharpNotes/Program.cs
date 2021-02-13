@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CSharpNotes
 {
@@ -6,7 +7,7 @@ namespace CSharpNotes
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Chapter00.C3_Operators.Run();
         }
     }
 }
