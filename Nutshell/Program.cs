@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Nutshell.Others;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,10 +8,9 @@ namespace Nutshell
 {
     class Program
     {
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
-            await AsyncBreakfast.Run5();
-            Console.Read();
+            VarianceExample.Run();
         }
     }
 }
