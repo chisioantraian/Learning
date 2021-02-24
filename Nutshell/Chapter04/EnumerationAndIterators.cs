@@ -12,7 +12,8 @@ namespace Nutshell.Chapter04
         {
             //IterateThroughCharacters();
             //CollectionInitializersExample();
-            IteratorExample();
+            //IteratorExample();
+            YieldExample();
         }
 
         private static void IterateThroughCharacters()
@@ -54,6 +55,25 @@ namespace Nutshell.Chapter04
                 prevFib = curFib;
                 curFib = newFib;
             }
+        }
+
+        private static void YieldExample()
+        {
+            foreach (string s in Foo(false))
+            {
+                Console.WriteLine(s);
+            }
+        }
+
+        private static IEnumerable<string> Foo(bool breakEarly)
+        {
+            yield return "One";
+            yield return "Two";
+            if (breakEarly)
+                yield break;
+            yield return "Three";
+
+
         }
     }
 }
