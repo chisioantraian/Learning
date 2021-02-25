@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,8 +11,11 @@ namespace Nutshell.Chapter07
     {
         public static void Run()
         {
-            LinkedListExample();
+            //LinkedListExample();
+            ImmutableArrayExample();
         }
+
+
 
         private static void LinkedListExample()
         {
@@ -28,6 +32,18 @@ namespace Nutshell.Chapter07
             {
                 Console.WriteLine(el);
             }
+        }
+
+        private static void ImmutableArrayExample()
+        {
+            //ImmutableArray<int> array = new ImmutableArray<int> { 1, 2, 3 };
+            ImmutableArray<int> array = ImmutableArray.Create<int>(1, 2, 3);
+            var list = new[] { 1, 2, 3 }.ToImmutableList();
+            var oldList = ImmutableList.Create<int>(1, 2, 3);
+            var newList = oldList.Add(44);
+
+            Console.WriteLine(oldList.Count);
+            Console.WriteLine(newList.Count);
         }
     }
 }
