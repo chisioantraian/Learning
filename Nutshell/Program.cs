@@ -10,16 +10,13 @@ using static System.Console;
 
 namespace Nutshell
 {
+
     class Program
     {
-
-        static void Main(string[] args)
+        static void Main()
         {
-            //Chapter04.EnumerationAndIterators.Run();
-            int sum = Suma(2, 3);
-            Console.WriteLine(sum);
+            Chapter07.CollectionsExample.Run();
         }
 
-        static dynamic Suma(dynamic x, dynamic y) => "bla";
     }
 }
